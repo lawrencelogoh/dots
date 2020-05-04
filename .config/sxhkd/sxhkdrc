@@ -1,0 +1,26 @@
+super + Escape
+	pkill -USR1 -x sxhkd
+super + F2
+	reboot	
+super + shift + Return
+	st
+super + d 
+	dmenu_run
+super + f
+	dmenufm
+super + {equal,minus}
+	amixer sset Master {10%+, 10%-}
+super + {F10,F9}	
+	light {-A 10, -U 10}
+super + s
+	status
+super + w 
+	nmtui
+super + shift + w
+	$BROWSER
+super + print 
+	maimpick
+
+
+
+

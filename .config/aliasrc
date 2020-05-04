@@ -1,0 +1,6 @@
+alias \
+	books="dmenufm ~/Documents/Pdfs/" \
+	pdl="youtube-dl -o '~/YTvids/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s'" \
+	esk="vim ~/.config/sxhkd/sxhkdrc" \
+	ls="ls --color=auto" \
+	config="/usr/bin/git --git-dir=/home/larry/.cfg/ --work-tree=/home/larry" \

@@ -1,0 +1,3 @@
+#!/bin/bash
+#printf " [ Tue 11 Feb 2020 - 22:00 ] "
+printf " [ Tue 11/02/2020 - 22:00 ] "

@@ -1,0 +1,3 @@
+#!/bin/bash
+# Shows network ssid or "connected"
+printf " [   Wifi ]"

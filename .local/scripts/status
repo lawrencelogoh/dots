@@ -1,0 +1,15 @@
+#!/usr/bin/sh
+battery=("Battery: $(source ~/.local/scripts/dunstnot/battery.sh)")
+
+network=("Network: $(source ~/.local/scripts/dunstnot/network.sh)")
+
+
+timeDate=$(source ~/.local/scripts/dunstnot/timeDate.sh)
+
+volume=("Volume: $(source ~/.local/scripts/dunstnot/volume.sh)")
+
+corona=("Rona: $(source ~/.local/scripts/corona.sh)")
+
+music=("Song: $(mocp -Q "%artist - %song")")
+
+notify-send -u  "Low" "Status" "$(echo -e "$battery\n$network\n$timeDate\n$volume\n$corona\n$music")"

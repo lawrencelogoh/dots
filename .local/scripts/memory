@@ -1,0 +1,2 @@
+#!/bin/bash
+printf " [ MEM: 2.0/8.0GB ]"

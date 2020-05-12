@@ -1,0 +1,9 @@
+#!/bin/bash
+#exec st -c ytdownloader -e
+{
+
+	youtube-dl -f "bestaudio[ext=m4a]" -o '~/YTvids/%(playlist)s/%(title)s.%(ext)s'  --download-archive \
+	$HOME/.local/scripts/script_assets/poda_dlarchive \
+	--cookies $HOME/.local/scripts/script_assets/cookies.txt \
+	"https://www.youtube.com/playlist?list=PLT79Xr8SUlLtMqXE0YeqCUttQJ-K7ycFm"
+} 2>&1 | tee ~/.local/scripts/logs/poda_log.txt

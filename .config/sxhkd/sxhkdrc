@@ -18,7 +18,7 @@ super + w
 	nmtui
 super + shift + w
 	$BROWSER
-super + print 
+super + Print 
 	maimpick
 
 

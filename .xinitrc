@@ -19,6 +19,9 @@ sxhkd &
 xrandr --output DP-2 --primary --auto --right-of eDP-1 -s 1920x1080 &
 
 
+# Startup programs
+firefox &
+discord &
 
 
 # Start dwm
@@ -27,4 +30,3 @@ xrandr --output DP-2 --primary --auto --right-of eDP-1 -s 1920x1080 &
 
 # Start sowm
 #exec sowm
-

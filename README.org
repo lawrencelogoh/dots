@@ -1,3 +1,10 @@
 * Larrylogoh's dots[WIP]
 Messy and might be unusable.
 Use at your own risk.
+
+** How to use
+...
+** Programs
+...
+** Scripts
+...

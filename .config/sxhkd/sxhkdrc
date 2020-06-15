@@ -9,9 +9,9 @@ super + d
 super + f
 	dmenufm
 super + {equal,minus}
-	amixer sset Master {10%+, 10%-}
+	amixer sset Master {10%+,10%-}
 super + {F10,F9}	
-	light {-A 10, -U 10}
+	light {-A 10,-U 10}
 super + s
 	status
 super + w 
@@ -21,6 +21,21 @@ super + shift + w
 super + Print 
 	maimpick
 
+# Music	
+super + {F7,F8}
+	mocp {-r,-f}
+super + F6
+	mocp -j 0s
+super + F5
+	mocp -G
+super + {bracketleft,bracketright}
+	mocp -k {-15,+15}
 
+# wmutils
+# move windows around
+#super + {h,j,k,l}
+#      wmv {-20 0, 0 20, 0 -20, 20 0} $(pfw)
 
-
+# resize windows
+#super + alt + {h,j,k,l}
+#      wrs {-20 0, 0 20, 0 -20, 20 0} $(pfw)

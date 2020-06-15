@@ -20,13 +20,16 @@ xrandr --output DP-2 --primary --auto --right-of eDP-1 -s 1920x1080 &
 
 
 # Startup programs
+#mocp -F & Figure out how to work this
+#mocp -t r,s,n &
+emacs ~/Documents/lms/journal_2020.org &
 firefox &
 discord &
 
-
 # Start dwm
-#exec dwm
-~/.local/scripts/startdwm.sh 
+exec dwm
+
+
 
 # Start sowm
-#exec sowm
+

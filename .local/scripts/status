@@ -9,7 +9,10 @@ timeDate=$(source ~/.local/scripts/dunstnot/timeDate.sh)
 volume=("Volume: $(source ~/.local/scripts/dunstnot/volume.sh)")
 
 corona=("Rona: $(source ~/.local/scripts/corona.sh)")
+memory=("Memory: $(source ~/.local/scripts/dunstnot/memory.sh)")
+storage=("Storage: $(source ~/.local/scripts/dunstnot/storage.sh)")
 
-music=("Song: $(mocp -Q "%artist - %song")")
 
-notify-send -u  "Low" "Status" "$(echo -e "$battery\n$network\n$timeDate\n$volume\n$corona\n$music")"
+music=("Song: $(mocp -Q "%file")")
+
+notify-send -u  "Low" "Status" "$(echo -e "$battery\n$network\n$timeDate\n$memory\n$storage\n$volume\n$corona\n$music")"

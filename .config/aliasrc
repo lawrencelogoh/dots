@@ -4,5 +4,5 @@ alias \
 	esk="vim ~/.config/sxhkd/sxhkdrc" \
 	ls="ls --color=auto" \
 	config="/usr/bin/git --git-dir=/home/larry/.cfg/ --work-tree=/home/larry" \
-  rm="rmtrash" \
-  rmdir="rmdirtrash" \
+  trash="rmtrash" \
+  trashdir="rmdirtrash" \

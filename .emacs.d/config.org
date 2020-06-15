@@ -74,3 +74,9 @@
     (other-window 1))
   (global-set-key (kbd "C-x 3") 'split-n-follow-v) 
 #+END_SRC
+* Agenda on startup
+#+BEGIN_SRC emacs-lisp
+  (setq inhibit-splash-screen t)
+  (org-agenda-list)
+  (delete-other-windows)
+#+END_SRC

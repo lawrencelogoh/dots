@@ -1,6 +1,14 @@
 * Larrylogoh's dots[WIP]
 Use at your own risk.
-
+** Requirements
+- bash
+- dunst
+- GNU emacs
+- git
+- mpv
+- sxhkd
+- xinit
+- [[https://github.com/ytdl-org/youtube-dl][youtube-dl]]
 ** How to use
 Clone it and put the files where they belong.
 #+BEGIN_SRC bash
@@ -8,16 +16,6 @@ git clone https://github.com/Larrylogoh/dots
 #+END_SRC
 Or use pulldots.sh in .local/scripts.
 That sets up a git bare repository as well, which is how I prefer to handle my dotfiles.
-** Programs I use
-- Browser - firefox
-- Hotkey daemon - sxhkd
-- Music player - cmus
-- Notification daemon - dunst
-- Terminal emulator - [[https://github.com/Larrylogoh/dwm][st]]
-- Text Editor - vim, GNU emacs
-- Video downloader - [[https://github.com/ytdl-org/youtube-dl][youtube-dl]]
-- Video player - mpv
-- Window manager - [[https://github.com/Larrylogoh/dwm][dwm]]
 ** Scripts
 - autostart - the plan is to have my own autotstart script(only does lowbatnotf now)
 - corona.sh - temporary coronavirus script used by status script

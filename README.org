@@ -1,10 +1,23 @@
 * Larrylogoh's dots[WIP]
-Messy and might be unusable.
 Use at your own risk.
 
 ** How to use
 ...
-** Programs
-...
+Clone it and put the files where they belong.
+#+BEGIN_SRC bash
+git clone https://github.com/Larrylogoh/dots
+#+END_SRC
+Or use pulldots.sh in .local/scripts.
+That sets up a git bare repository as well, which is how I prefer to handle my dotfiles.
+** Programs I use
+- Window manager - [[https://github.com/Larrylogoh/dwm][dwm]]
+- Terminal emulator - [[https://github.com/Larrylogoh/dwm][st]]
+- Text Editor - vim, GNU emacs
+- Music player - cmus
+- Video player - mpv
+- Browser - firefox
+- Video downloader - [[https://github.com/ytdl-org/youtube-dl][youtube-dl]]
+- Notification daemon - dunst
+- Hotkey daemon - sxhkd
 ** Scripts
 ...

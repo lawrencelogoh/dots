@@ -1,9 +1,34 @@
+* Install packages
+#+BEGIN_SRC emacs-lisp
+  (unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
+
+  (unless (package-installed-p 'material-theme)
+    (package-refresh-contents)
+    (package-install 'material-theme))
+
+  (unless (package-installed-p 'php-mode)
+    (package-refresh-contents)
+    (package-install 'php-mode))
+
+  (unless (package-installed-p 'org-journal)
+    (package-refresh-contents)
+    (package-install 'org-journal))
+
+  (unless (package-installed-p 'elpy)
+    (package-refresh-contents)
+    (package-install 'elpy))
+
+  (unless (package-installed-p 'emmet-mode)
+    (package-refresh-contents)
+    (package-install 'emmet-mode))
+#+END_SRC
 * Terminal
 ** Setting default shell to bash
 #+BEGIN_SRC emacs-lisp
 (defalias 'yes-or-no-p 'y-or-n-p)
 #+END_SRC
-
 
 
 
@@ -17,7 +42,19 @@
 #+END_SRC
 ** org agenda
 #+BEGIN_SRC emacs-lisp
-  (setq org-agenda-files (quote("~/test.org")))
+  (setq org-agenda-files (quote("~/Documents/lms/cal.org")))
+#+END_SRC
+** source code in org files
+Code that works in init.el doesn't work here. Figure it out and put it here
+** globally available org stuff
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c c") 'org-capture)
+#+END_SRC
+** org journal
+#+BEGIN_SRC elisp
+(setq org-journal-dir "~/Documents/lms/journal")
 #+END_SRC
 * IDO
 ** enable ido mode
@@ -77,6 +114,6 @@
 * Agenda on startup
 #+BEGIN_SRC emacs-lisp
   (setq inhibit-splash-screen t)
-  (org-agenda-list)
+  (org-agenda nil "a")
   (delete-other-windows)
 #+END_SRC

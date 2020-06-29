@@ -5,15 +5,8 @@
 
 (package-initialize)
 
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
-(unless (package-installed-p 'material-theme)
-  (package-refresh-contents)
-  (package-install 'material-theme))
-
 (org-babel-load-file (expand-file-name "~/.emacs.d/config.org"))
+
 ;(global-set-key (kbd "<C-return>") 'ansi-term)
 (setq scroll-conservatively 100)
 
@@ -43,6 +36,7 @@
  '(custom-safe-themes
    (quote
     ("732b807b0543855541743429c9979ebfb363e27ec91e82f463c91e68c772f6e3" "a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" default)))
+ '(org-babel-load-languages (quote ((emacs-lisp . t) (python . t) (shell . t))))
  '(package-selected-packages
    (quote
     (switch-window org-bullets material-theme which-key use-package))))

@@ -117,3 +117,13 @@ Code that works in init.el doesn't work here. Figure it out and put it here
   (org-agenda nil "a")
   (delete-other-windows)
 #+END_SRC
+* Code blocks in latex
+#+BEGIN_SRC emacs-lisp
+;; inside .emacs file
+(setq org-latex-listings 'minted
+      org-latex-packages-alist '(("" "minted"))
+      org-latex-pdf-process
+      '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+        "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+        "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+#+END_SRC

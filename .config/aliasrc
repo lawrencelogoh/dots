@@ -4,5 +4,9 @@ alias \
 	esk="vim ~/.config/sxhkd/sxhkdrc" \
 	ls="ls --color=auto" \
 	config="/usr/bin/git --git-dir=/home/larry/.cfg/ --work-tree=/home/larry" \
-  trash="rmtrash" \
-  trashdir="rmdirtrash" \
+  	trash="rmtrash" \
+  	trashdir="rmdirtrash" \
+	listtorrents="transmission-remote -l" \
+	jnl="emacs -nw ~/Documents/lms/journal_2020.org" \
+	lms="emacs -nw ~/Documents/lms/"
+

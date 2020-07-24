@@ -35,11 +35,11 @@ That sets up a git bare repository as well, which is how I prefer to handle my d
 - pulldots.sh - pulls dots from github, also creates a git bare repo for this repo the way I like it.
 - remaps - key remap script(stolen from [[https://github.com/lukesmithxyz][Luke Smith]])
 - startdwm.sh - dwm start script, from arch wiki.
+- mkcbk - Make a file the "current book"
+- ocbk - Open the "current book"
 - status - my status bar replacement.
 - statusbar - scripts for dwmblocks when I used a bar.
 - transadd - add a torrent to transmission (stolen from [[https://github.com/lukesmithxyz][Luke Smith]])
 - ytdownloader.sh - downloads youtube videos from a playlist in 1080p
 
-** Todo
-- [ ] Combine poda_dl and podv_dl
-- [ ] Remove unnneccessary scripts
+

@@ -1,0 +1,2 @@
+echo $(readlink -f $1) > ~/.local/scripts/script_assets/cbk
+notify-send "Made $1 current book"

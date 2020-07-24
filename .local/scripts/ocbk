@@ -1,0 +1,1 @@
+xdg-open $(cat ~/.local/scripts/script_assets/cbk)

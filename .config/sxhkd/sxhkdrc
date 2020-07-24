@@ -20,6 +20,8 @@ super + shift + w
 	$BROWSER
 super + Print 
 	maimpick
+super + shift + b
+	ocbk
 
 # Music	
 super + {F7,F8}

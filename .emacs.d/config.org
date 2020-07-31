@@ -23,15 +23,38 @@
   (unless (package-installed-p 'emmet-mode)
     (package-refresh-contents)
     (package-install 'emmet-mode))
+
+  (unless (package-installed-p 'page-break-lines)
+    (package-refresh-contents)
+    (package-install 'page-break-lines))
+
+  (unless (package-installed-p 'dashboard)
+    (package-refresh-contents)
+    (package-install 'dashboard))
+#+END_SRC
+* Fonts
+#+BEGIN_SRC emacs-lisp
+(setq org-hide-emphasis-markers t) ;; self explanatory
+#+END_SRC
+* Package configs[WIP]
+** Dashboard
+#+BEGIN_SRC emacs-lisp
+    (use-package dashboard
+      :ensure t
+      :config
+      (dashboard-setup-startup-hook))
+  (setq show-week-agenda-p t)    
+  ;(setq dashboard-items '((agenda . 5)
+  ;			 (recents . 5)
+  ;			 (projects . 5)
+  ;			 (bookmarks . 5))
+  ;)
 #+END_SRC
 * Terminal
 ** Setting default shell to bash
 #+BEGIN_SRC emacs-lisp
 (defalias 'yes-or-no-p 'y-or-n-p)
 #+END_SRC
-
-
-
 * Org
 ** org-bullets
 #+BEGIN_SRC emacs-lisp
@@ -113,9 +136,9 @@ Code that works in init.el doesn't work here. Figure it out and put it here
 #+END_SRC
 * Agenda on startup
 #+BEGIN_SRC emacs-lisp
-  (setq inhibit-splash-screen t)
-  (org-agenda nil "a")
-  (delete-other-windows)
+  ;(setq inhibit-splash-screen t)
+  ;(org-agenda nil "a")
+  ;(delete-other-windows)
 #+END_SRC
 * Code blocks in latex
 #+BEGIN_SRC emacs-lisp

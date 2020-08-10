@@ -1,3 +1,4 @@
+(server-start)
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives
@@ -37,9 +38,16 @@
    (quote
     ("732b807b0543855541743429c9979ebfb363e27ec91e82f463c91e68c772f6e3" "a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" default)))
  '(org-babel-load-languages (quote ((emacs-lisp . t) (python . t) (shell . t))))
+ '(org-modules
+   (quote
+    (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
    (quote
-    (switch-window org-bullets material-theme which-key use-package))))
+    (magit switch-window org-bullets material-theme which-key use-package))))
+  (require 'org-habit)
+  (setq org-habit-graph-column 80)
+  (setq org-habit-following-days 0)
+  (setq org-habit-preceding-days 30)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

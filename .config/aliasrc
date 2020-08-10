@@ -7,7 +7,10 @@ alias \
   	trash="rmtrash" \
   	trashdir="rmdirtrash" \
 	listtorrents="transmission-remote -l" \
+	temacs="emacsclient -t" \
+	emacs="emacsclient -c -a emacs" \
 	jnl="emacs -nw ~/Documents/lms/journal_2020.org" \
 	lms="emacs -nw ~/Documents/lms/" \
 	mkv2mp4="for f in *.mkv; do ffmpeg -i "$f" -c copy "${f%.mkv}.mp4"; done"
+	
 

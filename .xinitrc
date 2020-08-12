@@ -5,16 +5,14 @@ feh --bg-scale ~/Pictures/wall.jpg &
 
 # Disable trackpoint
 xinput disable "PS/2 Generic Mouse" &
-
 enable_touchpad & 	# Enable touch pad
-#dunst &		dunst for notifications
+dunst &		        # dunst for notifications
 xset r rate 300 50 &	# Speed xrate up
 remaps & 
 autostart &
 unclutter &
-clipmenud & 		# Start process for monitoring clipboard
-# Start compositor
-picom &
+clipmenud &             # Start process for monitoring clipboard
+picom &                 # Start compositor
 sxhkd &
 xrandr --output DP-2 --primary --auto --right-of eDP-1 -s 1920x1080 &
 

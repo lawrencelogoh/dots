@@ -1,16 +1,16 @@
 alias \
 	books="dmenufm ~/Documents/Pdfs/" \
 	pdl="youtube-dl -o '~/YTvids/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s'" \
-	esk="vim ~/.config/sxhkd/sxhkdrc" \
+	esk="te ~/.config/sxhkd/sxhkdrc" \
 	ls="ls --color=auto" \
 	config="/usr/bin/git --git-dir=/home/larry/.cfg/ --work-tree=/home/larry" \
   	trash="rmtrash" \
   	trashdir="rmdirtrash" \
 	listtorrents="transmission-remote -l" \
-	temacs="emacsclient -t" \
-	emacs="emacsclient -c -a emacs" \
-	jnl="emacs -nw ~/Documents/lms/journal_2020.org" \
-	lms="emacs -nw ~/Documents/lms/" \
-	mkv2mp4="for f in *.mkv; do ffmpeg -i "$f" -c copy "${f%.mkv}.mp4"; done"
+	te="emacsclient -t" \
+	e="emacsclient -c -a emacs" \
+	jnl="temacs ~/Documents/lms/journal_2020.org" \
+	lms="temacs ~/Documents/lms/" \
+	
 	
 

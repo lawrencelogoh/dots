@@ -1,4 +1,4 @@
-(server-start)
+;;(server-start)
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives
@@ -43,7 +43,7 @@
     (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
    (quote
-    (magit switch-window org-bullets material-theme which-key use-package))))
+    (org-alert magit switch-window org-bullets material-theme which-key use-package))))
   (require 'org-habit)
   (setq org-habit-graph-column 80)
   (setq org-habit-following-days 0)

@@ -1,9 +1,22 @@
 #!/bin/bash
 
-while true
-do 
-	sleep 300
-	lowbatnotf
-done 	
+DATE(){
+echo "[$(date +"%a %d-%m-%y %R")]"
+}
+BAT(){
+bat=$(cat /sys/class/power_supply/BAT0/capacity)
+echo "[BAT: $bat%]"
+}
+DISK(){
+    d=$(df -h $HOME | awk '/[0-9]/ {print $3 "/" $2}')
+    echo "[DISK: $d]"
+}
+MEM(){
+    mem=$(free -m | awk '/Mem/{printf "%.2f/%.2f %s",$3/1024,$2/1024,"GB"}')
+    echo "[MEM: $mem]"
+}
 
-
+while true; do
+    xsetroot -name "$(MEM) $(DISK) $(BAT) $(DATE)"
+    sleep 10s
+done &

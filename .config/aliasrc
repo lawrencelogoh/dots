@@ -3,7 +3,7 @@ alias \
 	pdl="youtube-dl -o '~/YTvids/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s'" \
 	esk="te ~/.config/sxhkd/sxhkdrc" \
 	ls="ls --color=auto" \
-	config="/usr/bin/git --git-dir=/home/larry/.cfg/ --work-tree=/home/larry" \
+	config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME" \
   	trash="rmtrash" \
   	trashdir="rmdirtrash" \
 	listtorrents="transmission-remote -l" \

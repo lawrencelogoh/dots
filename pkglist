@@ -1,1 +1,1 @@
-dmenu feh gcc python3 python3-pip xorg-minimal xrandr libX11-devel libXinerama libXinerama-devel libXft-devel xinit sxhkd xinput
+dmenu feh gcc python3 python3-pip xorg-minimal xrandr libX11-devel libXinerama libXinerama-devel libXft-devel xinit sxhkd xinput pulseaudio pavucontrol

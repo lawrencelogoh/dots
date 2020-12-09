@@ -53,19 +53,6 @@
      version-control t)       
 #+END_SRC
 * Package configs[WIP]
-** Dashboard
-#+BEGIN_SRC emacs-lisp
-    (use-package dashboard
-      :ensure t
-      :config
-      (dashboard-setup-startup-hook))
-  (setq show-week-agenda-p t)    
-  ;(setq dashboard-items '((agenda . 5)
-  ;			 (recents . 5)
-  ;			 (projects . 5)
-  ;			 (bookmarks . 5))
-  ;)
-#+END_SRC
 ** Habits
 #+BEGIN_SRC emacs-lisp
 ;  (require 'org-habit)
@@ -197,24 +184,6 @@ Code that works in init.el doesn't work here. Figure it out and put it here
 (global-auto-revert-mode 1) ;; refresh buffer when file is modified on disk
 #+END_SRC
 * Colors for emacsclient
-#+BEGIN_SRC emacs-lisp
-  (when (string-match "std" server-name)
-    (setq default-frame-alist
-	  (append default-frame-alist
-		  '((background-color . "#93DB80")
-		    (cursor-color . "red")
-		    )))
-    ;; or set a color-theme, e.g., (color-theme-classic)
-    )
-  (when (string-match "todo" server-name)
-    (setq default-frame-alist
-	  (append default-frame-alist
-		  '((background-color . "#F2F5A9")
-		    (cursor-color . "#CC2EFA")
-		    )))
-    ;; or set a color-theme, e.g., (color-theme-classic)
-    )
-#+END_SRC
 * Custom keybindings 
 ** magit
    #+BEGIN_SRC emacs-lisp

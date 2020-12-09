@@ -1,5 +1,5 @@
 # ~/.bashrc
-. /usr/share/LS_COLORS/dircolors.sh
+#. /usr/share/LS_COLORS/dircolors.sh
 
 export PATH="$HOME/.local/bin/:$HOME/.local/scripts/:$PATH"
 # If not running interactively, don't do anything

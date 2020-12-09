@@ -33,17 +33,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (material)))
+ '(custom-enabled-themes '(material))
  '(custom-safe-themes
-   (quote
-    ("732b807b0543855541743429c9979ebfb363e27ec91e82f463c91e68c772f6e3" "a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" default)))
- '(org-babel-load-languages (quote ((emacs-lisp . t) (python . t) (shell . t))))
+   '("edb73be436e0643727f15ebee8ad107e899ea60a3a70020dfa68ae00b0349a87" "732b807b0543855541743429c9979ebfb363e27ec91e82f463c91e68c772f6e3" "a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" default))
+ '(org-babel-load-languages '((emacs-lisp . t) (python . t) (shell . t)))
  '(org-modules
-   (quote
-    (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
+   '(org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m))
  '(package-selected-packages
-   (quote
-    (org-alert magit switch-window org-bullets material-theme which-key use-package))))
+   '(org-alert magit switch-window org-bullets material-theme which-key use-package)))
   (require 'org-habit)
   (setq org-habit-graph-column 80)
   (setq org-habit-following-days 0)

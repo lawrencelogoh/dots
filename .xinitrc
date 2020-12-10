@@ -1,6 +1,7 @@
-feh --bg-scale ~/Pictures/wall.jpg & # Set the wallpaper
+~/fixres & #for fixing resolution in a VM
+feh --bg-scale ~/pictures/wall.jpg & # Set the wallpaper
 
-~/Desktop/dwm-bar/dwm_bar.sh &
+
 xinput disable "PS/2 Generic Mouse" & # Disable trackpoint
 enable_touchpad & 	# Enable touch pad
 dunst &		        # dunst for notifications

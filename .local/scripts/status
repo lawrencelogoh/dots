@@ -1,4 +1,6 @@
-#!/usr/bin/sh
+#!/usr/bin/bash
+
+
 battery=("Battery: $(source ~/.local/scripts/dunstnot/battery.sh)")
 network=("Network: $(source ~/.local/scripts/dunstnot/network.sh)")
 vpn=("VPN: $(source ~/.local/scripts/dunstnot/vpn.sh)")

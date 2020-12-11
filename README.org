@@ -6,10 +6,11 @@
 ** How to use
    - Install a base os(I used void) and requirements
    - Run these commands
-     =curl -O https://raw.githack.com/lawrencelogoh/dots/master/.local/scripts/pulldots.sh=
-     =chmod +x pulldots.sh=
+     - =curl -O https://raw.githack.com/lawrencelogoh/dots/master/.local/scripts/pulldots.sh=
+     - =chmod +x pulldots.sh=
+     - =./pulldots.sh=
    - Install all the programs from pkglist
-     sudo xbps-install $(cat pkglist)
+     - =sudo xbps-install $(cat pkglist)=
    - Logout and Login
 ** Scripts and what they do
 - autostart - the plan is to have my own autostart script(only does lowbatnotf now)

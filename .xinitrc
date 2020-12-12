@@ -12,7 +12,8 @@ unclutter &
 clipmenud &             # Start clipboard manager
 picom &                 # Start compositor
 sxhkd &
-xrandr --output DP-2 --primary --auto --right-of eDP-1 -s 1920x1080 &
+xrandr --output eDP-1 --off &  # Turn off laptop monitor
+xrandr --output DP-2 --primary --auto &
 
 
 # Startup programs

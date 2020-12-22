@@ -1,7 +1,6 @@
 clipmenu
 dmenu
 dunst
-emacs
 emacs-x11
 feh
 ffmpeg
@@ -13,6 +12,7 @@ libXft-devel
 libXinerama
 libXinerama-devel
 make
+moc
 pavucontrol
 pkg-config
 pulseaudio

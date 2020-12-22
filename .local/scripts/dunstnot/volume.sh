@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-state=$(amixer -M sget Master | sed '6q;d' | cut -d " " -f 7 | tr -d '[]')
+state=$(amixer -M sget Master | sed '5q;d' | cut -d " " -f 6 | tr -d '[]')
 mute=$(cut -d " " -f 2 <<< $state)
 
 val=$(cut -d " " -f 1 <<< $state)

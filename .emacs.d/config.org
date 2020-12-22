@@ -107,7 +107,7 @@ Code that works in init.el doesn't work here. Figure it out and put it here
 ** capture
 #+BEGIN_SRC emacs-lisp
   (setq org-capture-templates
-	'(("i" "In basket" entry (file+headline "~/Documents/lms/in.org" "In basket")
+	'(("i" "In basket" entry (file+headline "~/lms/in.org" "In basket")
 	   "* %?\n  %i\n  %a")))
 #+END_SRC
 ** links

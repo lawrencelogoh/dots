@@ -11,6 +11,8 @@ alias \
 	e="emacsclient -c -a emacs" \
 	jnl="temacs ~/Documents/lms/journal_2020.org" \
 	lms="temacs ~/Documents/lms/" \
+	reboot="sudo reboot" \
+	zzz="sudo zzz" \
 	
 	
 

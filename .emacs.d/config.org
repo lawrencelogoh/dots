@@ -1,192 +1,58 @@
-* Install packages
-#+BEGIN_SRC emacs-lisp
-  (unless (package-installed-p 'use-package)
-    (package-refresh-contents)
-    (package-install 'use-package))
-
-  (unless (package-installed-p 'material-theme)
-    (package-refresh-contents)
-    (package-install 'material-theme))
-
-  (unless (package-installed-p 'php-mode)
-    (package-refresh-contents)
-    (package-install 'php-mode))
-
-  (unless (package-installed-p 'elpy)
-    (package-refresh-contents)
-    (package-install 'elpy))
-
-  (unless (package-installed-p 'emmet-mode)
-    (package-refresh-contents)
-    (package-install 'emmet-mode))
-
-  (unless (package-installed-p 'page-break-lines)
-    (package-refresh-contents)
-    (package-install 'page-break-lines))
-
-  (unless (package-installed-p 'dashboard)
-    (package-refresh-contents)
-    (package-install 'dashboard))
-
-  (unless (package-installed-p 'magit)
-    (package-refresh-contents)
-    (package-install 'magit))
-
-  (unless (package-installed-p 'htmlize)
-    (package-refresh-contents)
-    (package-install 'htmlize))
-
-#+END_SRC
-* Fonts
-#+BEGIN_SRC emacs-lisp
-(setq org-hide-emphasis-markers t) ;; self explanatory
-#+END_SRC
-* Backups
-#+BEGIN_SRC emacs-lisp
-  (setq
-     backup-by-copying t     
-     backup-directory-alist
-      '(("." . "~/.baks/"))    
-     delete-old-versions t
-     kept-new-versions 6
-     kept-old-versions 2
-     version-control t)       
-#+END_SRC
-* Package configs[WIP]
-** Habits
-#+BEGIN_SRC emacs-lisp
-;  (require 'org-habit)
-; (setq org-habit-graph-column 80)
-;  (setq org-habit-following-days 0)
-;  (setq org-habit-preceding-days 30)
-#+END_SRC
-** IDO
- #+BEGIN_SRC emacs-lisp
-   (setq ido-enable-flex-matching nil)
-   (setq ido-create-new-buffer 'always)
-   (setq ido-everywhere t)
-   (ido-mode 1)
- #+END_SRC
-** Emmet
-#+BEGIN_SRC emacs-lisp
-  (add-hook 'emmet-mode-hook (lambda () (setq emmet-indent-after-insert nil)))
-#+END_SRC
-** Cua
- #+BEGIN_SRC emacs-lisp
- (cua-mode t)
- #+END_SRC
-* Terminal
-** Setting default shell to bash
-#+BEGIN_SRC emacs-lisp
-(defalias 'yes-or-no-p 'y-or-n-p)
-#+END_SRC
-* Org
-** bullets
-#+BEGIN_SRC emacs-lisp
-  (use-package org-bullets
-    :ensure t
-    :config
-    (add-hook 'org-mode-hook (lambda () (org-bullets-mode))))
-#+END_SRC
-** agenda
-#+BEGIN_SRC emacs-lisp
-  (setq org-agenda-files (quote("~/Documents/lms/cal.org")))
-#+END_SRC
-** source code in org files
-Code that works in init.el doesn't work here. Figure it out and put it here
-** globally available org stuff
-#+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-c l") 'org-store-link)
-(global-set-key (kbd "C-c a") 'org-agenda)
-(global-set-key (kbd "C-c c") 'org-capture)
-#+END_SRC
-** journal
-#+BEGIN_SRC emacs-lisp
-(setq org-journal-dir "~/Documents/lms/journal")
-#+END_SRC
-** capture
-#+BEGIN_SRC emacs-lisp
-  (setq org-capture-templates
-	'(("i" "In basket" entry (file+headline "~/lms/in.org" "In basket")
-	   "* %?\n  %i\n  %a")))
-#+END_SRC
-** links
-#+BEGIN_SRC emacs-lisp
-  (setq org-return-follows-link t)
-#+END_SRC
-** alert
-#+BEGIN_SRC emacs-lisp
-(setq alert-default-style 'libnotify)
-#+END_SRC
-** minted
-#+BEGIN_SRC emacs-lisp
-  (setq org-latex-minted-options
-    '(("frame" "single")))
-#+END_SRC
-* Config edit/reload
-** edit
-#+BEGIN_SRC emacs-lisp
-  (defun config-visit ()
-    (interactive)
-    (find-file "~/.emacs.d/config.org"))
-  (global-set-key (kbd "C-c e") 'config-visit)
-#+END_SRC
-** reload
-#+BEGIN_SRC emacs-lisp
-  (defun config-reload ()
-    (interactive)
-    (org-babel-load-file (expand-file-name "~/.emacs.d/config.org")))
-  (global-set-key (kbd "C-c r") 'config-reload)
-#+END_SRC
-* Switch window
-#+BEGIN_SRC emacs-lisp
-  (use-package switch-window
-    :ensure t
-    :config
-    (setq switch-window-input-style 'minibuffer)
-    (setq switch-window-increase 4)
-    (setq switch-window-threshold 2)
-    (setq switch-window-shortcut-style 'qwerty)
-    (setq switch-window-qwerty-shortcuts
-	  '("a" "s" "d" "f" "j" "k" "l"))
-    :bind
-    ([remap other-window] . switch-window))
-#+END_SRC
-
-* Window splitting function
-#+BEGIN_SRC emacs-lisp
-  (defun split-n-follow-h ()
-    (interactive)
-    (split-window-below)
-    (balance-windows)
-    (other-window 1))
-  (global-set-key (kbd"C-x 2") 'split-n-follow-h) 
-
-  (defun split-n-follow-v ()
-    (interactive)
-    (split-window-right)
-    (balance-windows)
-    (other-window 1))
-  (global-set-key (kbd "C-x 3") 'split-n-follow-v) 
-#+END_SRC
-* Code blocks in latex
-#+BEGIN_SRC emacs-lisp
-;; inside .emacs file
-(setq org-latex-listings 'minted
-      org-latex-packages-alist '(("" "minted"))
-      org-latex-pdf-process
-      '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-        "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-        "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
-#+END_SRC
-* Misc
-#+BEGIN_SRC emacs-lisp
-(global-auto-revert-mode 1) ;; refresh buffer when file is modified on disk
-#+END_SRC
-* Colors for emacsclient
-* Custom keybindings 
-** magit
-   #+BEGIN_SRC emacs-lisp
- (global-set-key (kbd "C-x g") 'magit-status)
-   #+END_SRC
+* My emacs config
+  This emacs config will be divided into sections based on the things I want to do.
+  That list grows over time so I expect this will too.
+  
+** General
+   These are general configurations that should apply everywhere.
+   A skeleton if you will
    
+   
+*** Don't show startup message
+    Reason: it's unnecessary(for me)
+    #+begin_src emacs-lisp
+    (setq inhibit-startup-message t)
+    #+end_src
+*** Disable scrollbar, toolbar and menubar
+    Reason: I do not use them
+    #+begin_src emacs-lisp
+    (tool-bar-mode -1)
+    (menu-bar-mode -1)
+    (scroll-bar-mode -1)
+    #+end_src
+
+*** Set font and font size
+    #+begin_src emacs-lisp
+      (add-to-list 'default-frame-alist
+             '(font . "Fira Code Retina-14"))
+    #+end_src
+*** Install packages
+    Reason: I want emacs to install all the packages I want if they don't exist for one reason or another
+    #+begin_src emacs-lisp
+
+      (require 'package)
+      (package-initialize)
+
+      (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+			       ("melpa" . "https://melpa.org/packages/")))
+
+      (unless package-archive-contents
+	(package-refresh-contents))
+
+
+      ;; install use-package if it's not installed
+      (unless (package-installed-p 'use-package)
+	(package-install 'use-package))
+
+      ;; always ensure packages are installed
+      (require 'use-package-ensure)
+      (setq use-package-always-ensure t)
+
+      ;; packages
+      (use-package magit) ; an interface to git
+      (use-package modus-vivendi-theme
+      :config
+      (load-theme 'modus-vivendi t)) ; a dark theme designed for accessible readability
+
+
+    #+end_src
+

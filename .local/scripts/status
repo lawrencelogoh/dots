@@ -9,7 +9,7 @@ volume=("Volume: $(source ~/.local/scripts/dunstnot/volume.sh)")
 corona=("Rona: $(source ~/.local/scripts/corona.sh)")
 memory=("Memory: $(source ~/.local/scripts/dunstnot/memory.sh)")
 storage=("Storage: $(source ~/.local/scripts/dunstnot/storage.sh)")
-music=("Song: $(mocp -Q "%file")")
+music=("Song: $(mocp -Q %file | cut -d '/' -f 6-7)")
 
 
 notify-send -u  "Low" "Status" "$(echo -e "$battery\n$network\n$vpn\n$timeDate\n$memory\n$storage\n$volume\n$corona\n$music")"

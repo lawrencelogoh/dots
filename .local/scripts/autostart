@@ -44,7 +44,7 @@ picom &                 # Start compositor
 sxhkd &
 
 # Startup programs
-emacs --server &
+emacs --daemon &
 syncthing -no-browser &
 
 

@@ -7,6 +7,9 @@ ffmpeg
 firefox
 font-firacode
 gcc
+asciidoc
+libev-devel
+libXi-devel
 libX11-devel
 libXft-devel
 libXinerama
@@ -20,6 +23,7 @@ python3
 python3-pip
 sxhkd
 syncthing
+xdg-utils
 xinit
 xinput
 xorg-minimal

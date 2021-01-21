@@ -6,7 +6,7 @@
 ** How to use
    - Install a base os(I used void) and requirements
    - Run these commands
-     - =curl -O https://raw.githack.com/lawrencelogoh/dots/master/.local/scripts/pulldots.sh=
+     - =curl -O https://raw.githubusercontent.com/lawrencelogoh/dots/master/.local/scripts/pulldots.sh=
      - =chmod +x pulldots.sh=
      - =./pulldots.sh=
    - Install all the programs from pkglist

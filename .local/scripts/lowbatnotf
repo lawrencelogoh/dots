@@ -3,7 +3,7 @@
 bat_lvl=$(acpi| cut -d "," -f2| sed 's/%//g') 
 state=$(acpi| cut -d "," -f1| sed 's/Battery 0: //g')
 
-if [[ $bat_lvl -lt 15 && $state=='Discharging' ]]
+if [[ $bat_lvl -lt 20 && $state=='Discharging' ]]
 then 
 	notify-send -u critical "Low battery, plug in your computer or suspend"
 fi	

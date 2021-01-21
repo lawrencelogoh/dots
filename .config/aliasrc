@@ -1,6 +1,6 @@
 alias \
 	books="dmenufm ~/Documents/Pdfs/" \
-	pdl="youtube-dl -o '~/YTvids/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s'" \
+	pdl="youtube-dl -o '~/YTvids/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s' --download-archive '~/.local/scripts/script_assets/ytdl_archive'" \
 	esk="te ~/.config/sxhkd/sxhkdrc" \
 	ls="ls --color=auto" \
 	config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME" \

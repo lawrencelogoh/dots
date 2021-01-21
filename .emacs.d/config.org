@@ -7,6 +7,11 @@
    A skeleton if you will
    
    
+*** Keybindings  
+    #+begin_src emacs-lisp
+      (global-set-key (kbd "C-c a") 'org-agenda)
+      (global-set-key (kbd "C-c c") 'org-capture)
+    #+end_src
 *** Don't show startup message
     Reason: it's unnecessary(for me)
     #+begin_src emacs-lisp
@@ -55,4 +60,19 @@
 
 
     #+end_src
+** Org-mode
+#+begin_src emacs-lisp
+  (setq org-modules '(org-habit
+		      ))
+
+  (eval-after-load 'org
+   '(org-load-modules-maybe t))
+
+  (setq org-agenda-files (quote("~/lms/cal.org")))
+  (setq org-log-repeat 'time)
+  (setq org-log-into-drawer "LOGBOOK")
+  (setq org-habit-graph-column 80)
+  (setq org-habit-show-habits-only-for-today t)
+#+end_src
+
 

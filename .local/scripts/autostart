@@ -27,8 +27,9 @@ while true; do
     sleep 2m
 done &
 
-xrandr --output DP-2 --primary --auto &
+
 xrandr --output eDP-1 --off &  # Turn off laptop monitor
+
 
 feh --bg-scale ~/pictures/wall.jpg & # Set the wallpaper
 

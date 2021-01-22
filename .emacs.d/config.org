@@ -1,23 +1,34 @@
 * My emacs config
   This emacs config will be divided into sections based on the things I want to do.
   That list grows over time so I expect this will too.
-  
+
 ** General
    These are general configurations that should apply everywhere.
    A skeleton if you will
    
    
-*** Keybindings  
-    #+begin_src emacs-lisp
-      (global-set-key (kbd "C-c a") 'org-agenda)
-      (global-set-key (kbd "C-c c") 'org-capture)
-    #+end_src
+*** Config reload
+#+begin_src emacs-lisp
+  (defun config-reload ()
+      (interactive)
+      (org-babel-load-file (expand-file-name "~/.emacs.d/config.org")))
+  
+#+end_src
+*** Spellcheck
+#+begin_src emacs-lisp
+  (setq ispell-program-name "aspell")
+  (setq ispell-personal-dictionary "~/.config/.aspell.en.pws")
+  ;; enable spellcheck in all text-mode
+  (add-hook 'text-mode-hook 'flyspell-mode)
+  ;; enable spellcheck for comments in prog-mode
+  (add-hook 'prog-mode-hook 'flyspell-prog-mode)
+#+end_src
 *** Don't show startup message
-    Reason: it's unnecessary(for me)
+    Reason: unnecessary(for me)
     #+begin_src emacs-lisp
     (setq inhibit-startup-message t)
     #+end_src
-*** Disable scrollbar, toolbar and menubar
+*** Disable scroll-bar, toolbar and menubar
     Reason: I do not use them
     #+begin_src emacs-lisp
     (tool-bar-mode -1)
@@ -33,7 +44,6 @@
 *** Install packages
     Reason: I want emacs to install all the packages I want if they don't exist for one reason or another
     #+begin_src emacs-lisp
-
       (require 'package)
       (package-initialize)
 
@@ -41,12 +51,12 @@
 			       ("melpa" . "https://melpa.org/packages/")))
 
       (unless package-archive-contents
-	(package-refresh-contents))
+	      (package-refresh-contents))
 
 
       ;; install use-package if it's not installed
       (unless (package-installed-p 'use-package)
-	(package-install 'use-package))
+	      (package-install 'use-package))
 
       ;; always ensure packages are installed
       (require 'use-package-ensure)
@@ -54,12 +64,31 @@
 
       ;; packages
       (use-package magit) ; an interface to git
-      (use-package modus-vivendi-theme
-      :config
-      (load-theme 'modus-vivendi t)) ; a dark theme designed for accessible readability
+
+      (use-package modus-themes
+	:ensure
+	:init
+	;; Add all your customizations prior to loading the themes
+	(setq modus-themes-slanted-constructs t
+	      modus-themes-bold-constructs t)
+	      
+
+	;; Load the theme files before enabling a theme
+	(modus-themes-load-themes)
+	:config
+	;; Load the theme of your choice:
+	(modus-themes-load-vivendi))
 
 
     #+end_src
+*** Keybindings
+    #+begin_src emacs-lisp
+      (global-set-key (kbd "C-c a") 'org-agenda)
+      (global-set-key (kbd "C-c c") 'org-capture)
+      (global-set-key (kbd "C-c r") 'config-reload)
+      (global-set-key (kbd "M-<f2>") 'modus-themes-toggle) ; toggle light and dark modus themes
+    #+end_src
+
 ** Org-mode
 #+begin_src emacs-lisp
   (setq org-modules '(org-habit

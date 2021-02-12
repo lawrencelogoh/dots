@@ -15,11 +15,11 @@ rightprompt()
 
 PS1='\[$(tput sc; rightprompt; tput rc)\] \[\u@\h \W\]   \n\[\033[31m\] > \[\033[37m\]'
 
-#PS1='\d \A \[\u@\h \W\]'
 
-# NNN stuff
-#export sel="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.selection"
-#export NNN_FALLBACK_OPENER=xdg-open
-#export LC_COLLATE="C"
-#export NNN_PLUG='p: mpv ;'
+
+# Default programs
+export EDITOR="mg"
+export TERMINAL="st"
+export BROWSER="firefox"
+
 

@@ -35,6 +35,8 @@ super + F5
 super + {bracketleft,bracketright}
 	mocp -k {-15,+15}
 
+super + e
+      emacsclient -c
 # wmutils
 # move windows around
 #super + {h,j,k,l}

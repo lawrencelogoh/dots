@@ -1,4 +1,6 @@
+asciidoc
 clipmenu
+dialog
 dmenu
 dunst
 emacs-x11
@@ -7,13 +9,13 @@ ffmpeg
 firefox
 font-firacode
 gcc
-asciidoc
-libev-devel
-libXi-devel
+grub
 libX11-devel
 libXft-devel
+libXi-devel
 libXinerama
 libXinerama-devel
+libev-devel
 make
 moc
 pavucontrol

@@ -43,6 +43,7 @@ unclutter &
 clipmenud &             # Start clipboard manager
 picom &                 # Start compositor
 sxhkd &
+pulseaudio --start &
 
 # Startup programs
 emacs --daemon &

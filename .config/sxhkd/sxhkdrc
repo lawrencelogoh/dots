@@ -37,6 +37,7 @@ super + {bracketleft,bracketright}
 
 super + e
       emacsclient -c
+
 # wmutils
 # move windows around
 #super + {h,j,k,l}

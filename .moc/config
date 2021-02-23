@@ -1,0 +1,8 @@
+MusicDir = ~/audio/music
+
+# Set playback toggles.
+Repeat = yes
+Shuffle = yes
+AutoNext = yes
+
+Theme = nightly_theme

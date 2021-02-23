@@ -22,4 +22,5 @@ export EDITOR="mg"
 export TERMINAL="st"
 export BROWSER="firefox"
 
-
+# For dev
+FLASK_APP=app.py

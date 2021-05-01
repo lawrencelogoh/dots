@@ -1,7 +1,7 @@
 # ~/.bashrc
 #. /usr/share/LS_COLORS/dircolors.sh
 
-export PATH="$HOME/.local/bin/:$HOME/.local/scripts/:$PATH"
+export PATH="$HOME/.local/bin/:$HOME/.local/scripts/:$PATH:$HOME/go/bin"
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -24,3 +24,7 @@ export BROWSER="firefox"
 
 # For dev
 FLASK_APP=app.py
+FLASK_ENV=development
+FLASK_DEBUG=1
+PGDATA=/usr/local/pgsql/data
+

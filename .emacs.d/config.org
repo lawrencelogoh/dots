@@ -1,18 +1,82 @@
 * My emacs config
   This emacs config will be divided into sections based on the things I want to do.
   That list grows over time so I expect this will too.
-  
+   
 ** General
    These are general configurations that should apply everywhere.
    A skeleton if you will
    
    
+*** Install packages
+    Reason: I want emacs to install all the packages I want if they don't exist for one reason or another
+    #+begin_src emacs-lisp
+      (require 'package)
+      (package-initialize)
+      (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+			       ("melpa" . "https://melpa.org/packages/")))
+
+      (unless package-archive-contents
+	(package-refresh-contents))
+
+      ;; install use-package if it's not installed
+      (unless (package-installed-p 'use-package)
+	(package-install 'use-package))
+
+      ;; always ensure packages are installed
+      (require 'use-package-ensure)
+      (setq use-package-always-ensure t)
+
+      ;; packages
+
+
+      (use-package magit) ; an interface to git
+      (use-package company)
+      (use-package pomodoro)
+      (use-package format-all)
+      (use-package fira-code-mode)
+      (use-package htmlize)
+
+      (use-package org-static-blog)
+
+      (use-package go-mode)
+      (use-package eglot)
+      (use-package emmet-mode)
+
+      (use-package modus-themes
+	:init
+	(setq modus-themes-slanted-constructs t
+	      modus-themes-bold-constructs t)
+	(modus-themes-load-themes)
+	      :config
+	      (modus-themes-load-vivendi))
+
+      ;;     (use-package projectile
+      ;;	:config
+      ;;	(projectile-mode +1)
+      ;;	(setq projectile-project-search-path '("~/projects/general" "~/projects/work" "~/projects/tech" "~/projects/learn")))
+
+
+
+    #+end_src
+
 *** Config reload
 #+begin_src emacs-lisp
   (defun config-reload ()
       (interactive)
       (org-babel-load-file (expand-file-name "~/.emacs.d/config.org")))
   
+#+end_src
+
+*** Refresh buffer when file is modified on disk
+#+begin_src emacs-lisp
+  (global-auto-revert-mode 1) ;; refresh buffer when file is modified on disk
+#+end_src
+
+*** Pomodoro
+#+begin_src emacs-lisp
+  ;(require 'pomodoro) 
+   (pomodoro-add-to-mode-line)
+
 #+end_src
 *** Spellcheck
 #+begin_src emacs-lisp
@@ -23,6 +87,41 @@
   ;; enable spellcheck for comments in prog-mode
   (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 #+end_src
+*** Ligatures
+#+begin_src emacs-lisp
+  (add-hook 'prog-mode-hook 'fira-code-mode)
+#+end_src
+*** Hide details in dired
+#+begin_src emacs-lisp
+  (setq dired-hide-details-hide-information-lines t)
+#+end_src
+*** Backups
+  #+BEGIN_SRC emacs-lisp
+    (setq
+       backup-by-copying t     
+       backup-directory-alist
+	'(("." . "~/.baks/"))    
+       delete-old-versions t
+       kept-new-versions 6
+       kept-old-versions 2
+       version-control t)       
+  #+END_SRC
+*** Window splitting functions
+  #+BEGIN_SRC emacs-lisp
+    (defun split-n-follow-h ()
+      (interactive)
+      (split-window-below)
+      (balance-windows)
+      (other-window 1))
+     
+
+    (defun split-n-follow-v ()
+      (interactive)
+      (split-window-right)
+      (balance-windows)
+      (other-window 1))
+     
+  #+END_SRC
 *** Don't show startup message
     #+begin_src emacs-lisp
     (setq inhibit-startup-message t)
@@ -46,49 +145,10 @@
       (require 'ido)
       (ido-mode t)
     #+end_src
-*** Install packages
-    Reason: I want emacs to install all the packages I want if they don't exist for one reason or another
-    #+begin_src emacs-lisp
-      (require 'package)
-      (package-initialize)
-      (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-			       ("melpa" . "https://melpa.org/packages/")))
-
-      (unless package-archive-contents
-	      (package-refresh-contents))
-
-      ;; install use-package if it's not installed
-      (unless (package-installed-p 'use-package)
-	      (package-install 'use-package))
-
-      ;; always ensure packages are installed
-      (require 'use-package-ensure)
-      (setq use-package-always-ensure t)
-
-      ;; packages
-
-
-      (use-package magit) ; an interface to git
-
-      (use-package go-mode)
-      (use-package emmet-mode)
-
-      (use-package modus-themes
-	:init
-	(setq modus-themes-slanted-constructs t
-	      modus-themes-bold-constructs t)
-	(modus-themes-load-themes)
-	:config
-	(modus-themes-load-vivendi))
-
-      (use-package projectile
-	:config
-	(projectile-mode +1)
-	(setq projectile-project-search-path '("~/projects/general" "~/projects/work" "~/projects/tech")))
-
-
-
-    #+end_src
+*** Cua-mode 
+  #+BEGIN_SRC emacs-lisp
+  (cua-mode t)
+  #+END_SRC
 *** Keybindings
     #+begin_src emacs-lisp
       (global-set-key (kbd "C-c a") 'org-agenda)
@@ -96,9 +156,39 @@
       (global-set-key (kbd "C-c r") 'config-reload)
       (global-set-key (kbd "M-<f2>") 'modus-themes-toggle) ; toggle light and dark modus themes
       (global-unset-key (kbd "C-z"))
-      (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-    #+end_src
+      (global-set-key (kbd"C-x 2") 'split-n-follow-h) 
+      (global-set-key (kbd "C-x 3") 'split-n-follow-v) 
+      (global-set-key (kbd "C-x g") 'magit-status)
 
+    #+end_src
+** Programming
+*** Line numbers
+#+begin_src emacs-lisp
+  (add-hook 'prog-mode-hook 'linum-mode)
+#+end_src
+*** LSP
+#+begin_src emacs-lisp
+  (add-hook 'prog-mode-hook 'eglot-ensure)
+  (add-hook 'prog-mode-hook 'company-mode)
+  
+
+  ;; Set up before-save hooks to format buffer and add/delete imports.
+  ;; Make sure you don't have other gofmt/goimports hooks enabled.
+;;  (defun lsp-go-install-save-hooks ()
+;;    (add-hook 'before-save-hook #'lsp-format-buffer t t)
+;;    (add-hook 'before-save-hook #'lsp-organize-imports t t))
+;;  (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+
+#+end_src
+*** Formatting
+#+begin_src emacs-lisp
+  (add-hook 'before-save-hook #'gofmt-before-save)
+#+end_src
+*** Linting
+    #+begin_src emacs-lisp
+      ;(add-to-list 'load-path (concat (getenv "GOPATH")  "/src/golang.org/x/lint/misc/emacs/"))
+      ;(require 'golint)
+    #+end_src
 ** Org-mode
 #+begin_src emacs-lisp
   (setq org-modules '(org-habit
@@ -113,5 +203,56 @@
   (setq org-habit-graph-column 80)
   (setq org-habit-show-habits-only-for-today t)
 #+end_src
+*** Latex
+    #+begin_src emacs-lisp
+    (setq org-latex-listings 'minted
+      org-latex-packages-alist '(("" "minted"))
+      org-latex-pdf-process
+      '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+
+    #+end_src
+** Blog
+   #+begin_src emacs-lisp
+     (setq org-static-blog-publish-title "Lawrence Logoh's Blog")
+     (setq org-static-blog-publish-url "https://www.lawrencelogoh.xyz/blog/")
+     (setq org-static-blog-publish-directory "~/repos/site/blog/")
+     (setq org-static-blog-posts-directory "~/repos/site/blog/posts/")
+     (setq org-static-blog-drafts-directory "~/repos/site/blog/drafts/")
+     (setq org-static-blog-enable-tags t)
+     (setq org-static-blog-use-preview t)
+     (setq org-export-with-toc nil)
+     (setq org-export-with-section-numbers nil)
 
 
+     ;; This header is inserted into the <head> section of every page:
+     ;;   (you will need to create the style sheet at
+     ;;    ~/projects/blog/static/style.css
+     ;;    and the favicon at
+     ;;    ~/projects/blog/static/favicon.ico)
+     (setq org-static-blog-page-header
+     "<meta name=\"author\" content=\"Lawrence Logoh\">
+     <meta name=\"referrer\" content=\"no-referrer\">
+     <link href=\"https://cdn.githubraw.com/lawrencelogoh/lawrencelogoh.github.io/master/static/style.css\" rel=\"stylesheet\" type=\"text/css\" />
+     <link rel=\"icon\" href=\"static/favicon.ico\">")
+
+     ;; This preamble is inserted at the beginning of the <body> of every page:
+     ;;   This particular HTML creates a <div> with a simple linked headline
+     (setq org-static-blog-page-preamble
+     "<div class=\"header\">
+       <a href=\"https://www.lawrencelogoh.xyz\">Website</a>
+       <a href=\"https://www.lawrencelogoh.xyz/blog/\">Blog</a>
+       <a href=\"https://www.lawrencelogoh.xyz/blog/archive.html\">Blog archive</a>
+       <a href=\"https://www.lawrencelogoh.xyz/blog/tags.html\">Categories</a>
+     </div>")
+
+     ;; This postamble is inserted at the end of the <body> of every page:
+     ;;   This particular HTML creates a <div> with a link to the archive page
+     ;;   and a licensing stub.
+     (setq org-static-blog-page-postamble
+     "")
+
+     ;; This HTML code is inserted into the index page between the preamble and
+     ;;   the blog posts
+     (setq org-static-blog-index-front-matter
+     "<h1> Lawrence Logoh's Blog </h1>\n")
+   #+end_src

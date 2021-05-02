@@ -28,7 +28,9 @@ while true; do
 done &
 
 
-xrandr --output eDP-1 --off &  # Turn off laptop monitor
+if [ $hostname == "devbox" ]; then
+	xrandr --output eDP-1 --off &  # Turn off laptop monitor
+fi &
 
 
 feh --bg-scale ~/pictures/wall.jpg & # Set the wallpaper

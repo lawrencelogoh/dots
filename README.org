@@ -1,8 +1,10 @@
 * Larrylogoh's dots[WIP]
   Use at your own risk.
 ** Requirements
-   * git
-   * curl
+   - git
+   - curl
+   - dwm
+   - st
 ** How to use
    - Install a base os(I used void) and requirements
    - Run these commands

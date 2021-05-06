@@ -30,9 +30,13 @@
 
 
       (use-package magit) ; an interface to git
+      (use-package golint) ; an interface to git
       (use-package company)
       (use-package pomodoro)
       (use-package format-all)
+      
+
+
       (use-package fira-code-mode)
       (use-package htmlize)
 
@@ -170,24 +174,18 @@
 #+begin_src emacs-lisp
   (add-hook 'prog-mode-hook 'eglot-ensure)
   (add-hook 'prog-mode-hook 'company-mode)
-  
-
-  ;; Set up before-save hooks to format buffer and add/delete imports.
-  ;; Make sure you don't have other gofmt/goimports hooks enabled.
-;;  (defun lsp-go-install-save-hooks ()
-;;    (add-hook 'before-save-hook #'lsp-format-buffer t t)
-;;    (add-hook 'before-save-hook #'lsp-organize-imports t t))
-;;  (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
-
 #+end_src
 *** Formatting
 #+begin_src emacs-lisp
-  (add-hook 'before-save-hook #'gofmt-before-save)
+  (setq format-all-show-errors 'always)
+  (add-hook 'format-all-mode-hook 'format-all-ensure-formatter)
+  (add-hook 'prog-mode-hook 'format-all-mode)
 #+end_src
 *** Linting
     #+begin_src emacs-lisp
-      ;(add-to-list 'load-path (concat (getenv "GOPATH")  "/src/golang.org/x/lint/misc/emacs/"))
-      ;(require 'golint)
+      
+      (add-to-list 'load-path (concat (getenv "GOPATH")  "/src/golang.org/x/lint/misc/emacs/"))
+      (require 'golint)
     #+end_src
 ** Org-mode
 #+begin_src emacs-lisp
@@ -219,3 +217,4 @@
 
 
     #+end_src
+

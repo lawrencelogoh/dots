@@ -205,54 +205,17 @@
 #+end_src
 *** Latex
     #+begin_src emacs-lisp
-    (setq org-latex-listings 'minted
-      org-latex-packages-alist '(("" "minted"))
-      org-latex-pdf-process
-      '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+      (setq org-latex-listings 'minted)
+      (require 'ox-latex)
+      (add-to-list 'org-latex-packages-alist '("" "minted"))
+      (add-to-list 'org-latex-packages-alist '("" "titletoc"))
+      (add-to-list 'org-latex-packages-alist '("" "hyperref"))
 
     #+end_src
-** Blog
-   #+begin_src emacs-lisp
-     (setq org-static-blog-publish-title "Lawrence Logoh's Blog")
-     (setq org-static-blog-publish-url "https://www.lawrencelogoh.xyz/blog/")
-     (setq org-static-blog-publish-directory "~/repos/site/blog/")
-     (setq org-static-blog-posts-directory "~/repos/site/blog/posts/")
-     (setq org-static-blog-drafts-directory "~/repos/site/blog/drafts/")
-     (setq org-static-blog-enable-tags t)
-     (setq org-static-blog-use-preview t)
-     (setq org-export-with-toc nil)
-     (setq org-export-with-section-numbers nil)
+*** org-export
+    #+begin_src emacs-lisp
+      (setq org-export-with-toc t)
+      (setq org-export-with-section-numbers nil)
 
 
-     ;; This header is inserted into the <head> section of every page:
-     ;;   (you will need to create the style sheet at
-     ;;    ~/projects/blog/static/style.css
-     ;;    and the favicon at
-     ;;    ~/projects/blog/static/favicon.ico)
-     (setq org-static-blog-page-header
-     "<meta name=\"author\" content=\"Lawrence Logoh\">
-     <meta name=\"referrer\" content=\"no-referrer\">
-     <link href=\"https://cdn.githubraw.com/lawrencelogoh/lawrencelogoh.github.io/master/static/style.css\" rel=\"stylesheet\" type=\"text/css\" />
-     <link rel=\"icon\" href=\"static/favicon.ico\">")
-
-     ;; This preamble is inserted at the beginning of the <body> of every page:
-     ;;   This particular HTML creates a <div> with a simple linked headline
-     (setq org-static-blog-page-preamble
-     "<div class=\"header\">
-       <a href=\"https://www.lawrencelogoh.xyz\">Website</a>
-       <a href=\"https://www.lawrencelogoh.xyz/blog/\">Blog</a>
-       <a href=\"https://www.lawrencelogoh.xyz/blog/archive.html\">Blog archive</a>
-       <a href=\"https://www.lawrencelogoh.xyz/blog/tags.html\">Categories</a>
-     </div>")
-
-     ;; This postamble is inserted at the end of the <body> of every page:
-     ;;   This particular HTML creates a <div> with a link to the archive page
-     ;;   and a licensing stub.
-     (setq org-static-blog-page-postamble
-     "")
-
-     ;; This HTML code is inserted into the index page between the preamble and
-     ;;   the blog posts
-     (setq org-static-blog-index-front-matter
-     "<h1> Lawrence Logoh's Blog </h1>\n")
-   #+end_src
+    #+end_src

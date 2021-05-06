@@ -1,11 +1,11 @@
 * Larrylogoh's dots[WIP]
   Use at your own risk.
 ** Requirements
+   * Void Linux base install 
    * git
    * curl
 ** How to use
-   - Install a base os(I used void) and requirements
-   - Run these commands
+   - Pull the dotfiles(also creates a git bare repo)
      - =curl -O https://raw.githubusercontent.com/lawrencelogoh/dots/master/.local/scripts/pulldots.sh=
      - =chmod +x pulldots.sh=
      - =./pulldots.sh=
@@ -13,7 +13,7 @@
      - =sudo xbps-install $(cat pkglist)=
    - Logout and Login
 ** Scripts and what they do
-- autostart - the plan is to have my own autostart script(only does lowbatnotf now)
+- autostart - starts some scripts and executes commands after login
 - corona.sh - temporary coronavirus script used by status script
 - disable_touchpad - self explanatory, temporary
 - displayselect - script for setting up monitors(stolen from [[https://github.com/lukesmithxyz][Luke Smith]])

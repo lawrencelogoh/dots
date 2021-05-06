@@ -1,3 +1,4 @@
+NetworkManager
 asciidoc
 clipmenu
 dialog
@@ -20,6 +21,7 @@ make
 moc
 pavucontrol
 pkg-config
+polkit
 pulseaudio
 python3
 python3-pip

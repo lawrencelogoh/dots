@@ -1,16 +1,24 @@
 * Larrylogoh's dots[WIP]
   Use at your own risk.
 ** Requirements
-   * Void Linux base install 
-   * git
-   * curl
+   - Void or Arch Linux base install 
+   - git
+   - curl
+   - dwm
+   - st
+   
+
 ** How to use
    - Pull the dotfiles(also creates a git bare repo)
      - =curl -O https://raw.githubusercontent.com/lawrencelogoh/dots/master/.local/scripts/pulldots.sh=
      - =chmod +x pulldots.sh=
      - =./pulldots.sh=
-   - Install all the programs from pkglist
-     - =sudo xbps-install $(cat pkglist)=
+   - Install all the programs from 
+     - Void
+       - =sudo xbps-install $(cat pkglist)=
+     - Arch
+       - =sudo pacman -Sy $(cat arch_pkglist)=
+	 
    - Logout and Login
 ** Scripts and what they do
 - autostart - starts some scripts and executes commands after login

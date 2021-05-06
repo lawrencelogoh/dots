@@ -28,7 +28,7 @@ while true; do
 done &
 
 
-if [ $hostname == "devbox" ]; then
+if [ $HOSTNAME == "devbox" ]; then
     xrandr --output eDP-1 --off &  # Turn off laptop monitor
     disable_touchpad & 	# Disable touch pad 
 fi &

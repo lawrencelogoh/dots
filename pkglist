@@ -17,8 +17,9 @@ libXft-devel
 libXi-devel
 libXinerama
 libXinerama-devel
-libev-de
+libev-devel
 make
+mg
 moc
 pavucontrol
 pkg-config
@@ -28,11 +29,12 @@ python3
 python3-pip
 sxhkd
 syncthing
-vel
 xdg-utils
+xf86-video-intel
 xinit
 xinput
 xorg-minimal
 xrandr
-zathura
 xsetroot
+xtools
+zathura

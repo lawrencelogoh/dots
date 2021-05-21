@@ -21,6 +21,7 @@ libev-devel
 make
 mg
 moc
+mpv
 pavucontrol
 pkg-config
 polkit

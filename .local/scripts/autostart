@@ -29,7 +29,7 @@ done &
 
 
 if [ $HOSTNAME == "devbox" ]; then
-    xrandr --output eDP-1 --off &  # Turn off laptop monitor
+    xrandr --output eDP1 --off &  # Turn off laptop monitor
     disable_touchpad & 	# Disable touch pad 
 fi &
 

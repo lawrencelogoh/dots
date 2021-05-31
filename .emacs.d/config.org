@@ -1,220 +1,136 @@
 * My emacs config
-  This emacs config will be divided into sections based on the things I want to do.
-  That list grows over time so I expect this will too.
+ 
+** Install packages
+   #+begin_src emacs-lisp
+     (require 'package)
+     (package-initialize)
+     (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+			      ("melpa" . "https://melpa.org/packages/")))
+
+     (unless package-archive-contents
+       (package-refresh-contents))
+
+     ;; install use-package if it's not installed
+     (unless (package-installed-p 'use-package)
+       (package-install 'use-package))
+
+     ;; always ensure packages are installed
+     (require 'use-package-ensure)
+     (setq use-package-always-ensure t)
+
+     ;; packages
+     (use-package modus-themes
+       :init
+       (setq modus-themes-slanted-constructs t
+	     modus-themes-bold-constructs t)
+       (modus-themes-load-themes)
+	     :config
+	     (modus-themes-load-vivendi))
+
+     ;; programming
+
+     (use-package go-mode)
+     (use-package python-mode)
+     (use-package haskell-mode)
+     (use-package rust-mode)
+
+     ;; add other modes
+     (use-package reformatter)
+     (use-package eglot) ;; lsp client
+     (use-package emmet-mode)
+     (use-package magit) ; an interface to git
+     (use-package htmlize)
+
+   #+end_src
    
-** General
-   These are general configurations that should apply everywhere.
-   A skeleton if you will
-   
-   
-*** Install packages
-    Reason: I want emacs to install all the packages I want if they don't exist for one reason or another
-    #+begin_src emacs-lisp
-      (require 'package)
-      (package-initialize)
-      (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-			       ("melpa" . "https://melpa.org/packages/")))
-
-      (unless package-archive-contents
-	(package-refresh-contents))
-
-      ;; install use-package if it's not installed
-      (unless (package-installed-p 'use-package)
-	(package-install 'use-package))
-
-      ;; always ensure packages are installed
-      (require 'use-package-ensure)
-      (setq use-package-always-ensure t)
-
-      ;; packages
-
-
-      (use-package magit) ; an interface to git
-      (use-package golint) ; an interface to git
-      (use-package company)
-      (use-package pomodoro)
-      (use-package format-all)
-      
-
-
-      (use-package fira-code-mode)
-      (use-package htmlize)
-
-      (use-package org-static-blog)
-
-      (use-package go-mode)
-      (use-package eglot)
-      (use-package emmet-mode)
-
-      (use-package modus-themes
-	:init
-	(setq modus-themes-slanted-constructs t
-	      modus-themes-bold-constructs t)
-	(modus-themes-load-themes)
-	      :config
-	      (modus-themes-load-vivendi))
-
-      ;;     (use-package projectile
-      ;;	:config
-      ;;	(projectile-mode +1)
-      ;;	(setq projectile-project-search-path '("~/projects/general" "~/projects/work" "~/projects/tech" "~/projects/learn")))
-
-
-
-    #+end_src
-
-*** Config reload
+** Quality of life
 #+begin_src emacs-lisp
+  (setq inhibit-startup-message t)
+
+  ;; disable tool, menu and scroll bar
+  (tool-bar-mode -1)
+  (menu-bar-mode -1)
+  (scroll-bar-mode -1)
+
+  ;; function to reload configuration
   (defun config-reload ()
       (interactive)
       (org-babel-load-file (expand-file-name "~/.emacs.d/config.org")))
-  
-#+end_src
 
-*** Refresh buffer when file is modified on disk
-#+begin_src emacs-lisp
-  (global-auto-revert-mode 1) ;; refresh buffer when file is modified on disk
-#+end_src
+  ;; refresh buffer when file is modified on disk
+  (global-auto-revert-mode 1)
 
-*** Pomodoro
-#+begin_src emacs-lisp
-  ;(require 'pomodoro) 
-   (pomodoro-add-to-mode-line)
-
+  ;; font
+  (add-to-list 'default-frame-alist
+	       '(font . "Fira Code Retina-14"))
 #+end_src
+** Writing
 *** Spellcheck
-#+begin_src emacs-lisp
-  (setq ispell-program-name "aspell")
-  (setq ispell-personal-dictionary "~/.config/.aspell.en.pws")
-  ;; enable spellcheck in all text-mode
-  (add-hook 'text-mode-hook 'flyspell-mode)
-  ;; enable spellcheck for comments in prog-mode
-  (add-hook 'prog-mode-hook 'flyspell-prog-mode)
-#+end_src
-*** Ligatures
-#+begin_src emacs-lisp
-  (add-hook 'prog-mode-hook 'fira-code-mode)
-#+end_src
-*** Hide details in dired
-#+begin_src emacs-lisp
-  (setq dired-hide-details-hide-information-lines t)
-#+end_src
-*** Backups
-  #+BEGIN_SRC emacs-lisp
-    (setq
-       backup-by-copying t     
-       backup-directory-alist
-	'(("." . "~/.baks/"))    
-       delete-old-versions t
-       kept-new-versions 6
-       kept-old-versions 2
-       version-control t)       
-  #+END_SRC
-*** Window splitting functions
-  #+BEGIN_SRC emacs-lisp
-    (defun split-n-follow-h ()
-      (interactive)
-      (split-window-below)
-      (balance-windows)
-      (other-window 1))
-     
-
-    (defun split-n-follow-v ()
-      (interactive)
-      (split-window-right)
-      (balance-windows)
-      (other-window 1))
-     
-  #+END_SRC
-*** Don't show startup message
     #+begin_src emacs-lisp
-    (setq inhibit-startup-message t)
-    #+end_src
-*** Disable scroll-bar, toolbar and menubar
-    #+begin_src emacs-lisp
-    (tool-bar-mode -1)
-    (menu-bar-mode -1)
-    (scroll-bar-mode -1)
-    #+end_src
-
-*** Set font and font size
-    #+begin_src emacs-lisp
-      (add-to-list 'default-frame-alist
-             '(font . "Fira Code Retina-14"))
-    #+end_src
-    
-*** Completion
-    #+begin_src emacs-lisp
-      ;; enable ido
-      (require 'ido)
-      (ido-mode t)
-    #+end_src
-*** Cua-mode 
-  #+BEGIN_SRC emacs-lisp
-  (cua-mode t)
-  #+END_SRC
-*** Keybindings
-    #+begin_src emacs-lisp
-      (global-set-key (kbd "C-c a") 'org-agenda)
-      (global-set-key (kbd "C-c c") 'org-capture)
-      (global-set-key (kbd "C-c r") 'config-reload)
-      (global-set-key (kbd "M-<f2>") 'modus-themes-toggle) ; toggle light and dark modus themes
-      (global-unset-key (kbd "C-z"))
-      (global-set-key (kbd"C-x 2") 'split-n-follow-h) 
-      (global-set-key (kbd "C-x 3") 'split-n-follow-v) 
-      (global-set-key (kbd "C-x g") 'magit-status)
-
+      (setq ispell-program-name "aspell")
+      (setq ispell-personal-dictionary "~/.config/.aspell.en.pws")
+      ;; enable spellcheck in all text-mode
+      (add-hook 'text-mode-hook 'flyspell-mode)
+      ;; enable spellcheck for comments in prog-mode
+      (add-hook 'prog-mode-hook 'flyspell-prog-mode)
     #+end_src
 ** Programming
-*** Line numbers
-#+begin_src emacs-lisp
-  (add-hook 'prog-mode-hook 'linum-mode)
-#+end_src
-*** LSP
-#+begin_src emacs-lisp
-  (add-hook 'prog-mode-hook 'eglot-ensure)
-  (add-hook 'prog-mode-hook 'company-mode)
-#+end_src
-*** Formatting
-#+begin_src emacs-lisp
-  (setq format-all-show-errors 'always)
-  (add-hook 'format-all-mode-hook 'format-all-ensure-formatter)
-  (add-hook 'prog-mode-hook 'format-all-mode)
-#+end_src
-*** Linting
+*** Code formatting
     #+begin_src emacs-lisp
-      
-      (add-to-list 'load-path (concat (getenv "GOPATH")  "/src/golang.org/x/lint/misc/emacs/"))
-      (require 'golint)
+      (require 'reformatter)
+      ;; go
+      (setq go-format-command "gofmt")
+      (reformatter-define go-format
+	:program go-format-command
+	:lighter " GF")
+
+      ;; py 
+      (setq py-format-command "black")
+      (reformatter-define py-format
+	:program py-format-command
+	:args '("")
+	      :lighter " PF")
+
+      ;; go 
+      (setq hs-format-command "hsfmt")
+      (reformatter-define hs-format
+	:program hs-format-command
+	:args '("format")
+	:lighter " HF")
+
+      ;; rust 
+      (setq rust-format-command "rustfmt")
+      (reformatter-define rust-format
+	:program rust-format-command
+	:args '("format")
+	:lighter " RF")
+
+      ;; c 
+	    (setq c-format-command "cfmt")
+      (reformatter-define c-format
+	:program c-format-command
+	:args '("format")
+	:lighter " CF")
+
+      ;; cpp 
+      (setq cpp-format-command "cppfmt")
+      (reformatter-define cpp-format
+	:program cpp-format-command
+	:args '("format")
+	:lighter " CPPF")
+
+      ;; hooks
+      ;; find a way to do these programmatically 
+      (add-hook 'go-mode-hook 'go-format-on-save-mode)
+      (add-hook 'prog-mode-hook 'py-format-on-save-mode)
     #+end_src
-** Org-mode
-#+begin_src emacs-lisp
-  (setq org-modules '(org-habit
-		      ))
+** Keybindings
+   #+begin_src emacs-lisp
+     (global-set-key (kbd "C-c c") 'org-capture)
+     (global-set-key (kbd "C-c r") 'config-reload)
+     (global-set-key (kbd "M-<f2>") 'modus-themes-toggle) ; toggle light and dark modus themes
+     (global-unset-key (kbd "C-z"))
+     (global-set-key (kbd "C-x g") 'magit-status)
+   #+end_src
 
-  (eval-after-load 'org
-   '(org-load-modules-maybe t))
-
-  (setq org-agenda-files (quote("~/lms/cal.org")))
-  (setq org-log-repeat 'time)
-  (setq org-log-into-drawer "LOGBOOK")
-  (setq org-habit-graph-column 80)
-  (setq org-habit-show-habits-only-for-today t)
-#+end_src
-*** Latex
-    #+begin_src emacs-lisp
-      (setq org-latex-listings 'minted)
-      (require 'ox-latex)
-      (add-to-list 'org-latex-packages-alist '("" "minted"))
-      (add-to-list 'org-latex-packages-alist '("" "titletoc"))
-      (add-to-list 'org-latex-packages-alist '("" "hyperref"))
-
-    #+end_src
-*** org-export
-    #+begin_src emacs-lisp
-      (setq org-export-with-toc t)
-      (setq org-export-with-section-numbers nil)
-
-
-    #+end_src
 

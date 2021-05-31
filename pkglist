@@ -34,7 +34,7 @@ polkit
 pulseaudio
 python3
 python3-pip
-rus
+rustup
 sxhkd
 syncthing
 wqy-microhei
@@ -50,4 +50,4 @@ xtools
 zathura
 zathura-djvu
 zathura-pdf-mupdf
-zathura-pstup
+zathura-ps

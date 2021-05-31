@@ -12,6 +12,7 @@ ffmpeg
 firefox
 font-firacode
 gcc
+ghc
 go
 gopls
 grub
@@ -33,6 +34,7 @@ polkit
 pulseaudio
 python3
 python3-pip
+rus
 sxhkd
 syncthing
 wqy-microhei
@@ -48,4 +50,4 @@ xtools
 zathura
 zathura-djvu
 zathura-pdf-mupdf
-zathura-ps
+zathura-pstup

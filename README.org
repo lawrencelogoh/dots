@@ -1,7 +1,7 @@
 * Larrylogoh's dots[WIP]
   Use at your own risk.
 ** Requirements
-   - Void or Arch Linux base install 
+   - Void/Arch/OpenBSD 
    - git
    - curl
    - dwm
@@ -15,9 +15,11 @@
      - =./pulldots.sh=
    - Install all the programs from 
      - Void
-       - =sudo xbps-install $(cat pkglist)=
+       - =# xbps-install $(cat void.pkgs)=
      - Arch
-       - =sudo pacman -Sy $(cat arch_pkglist)=
+       - =# pacman -Sy $(cat arch.pkgs)=
+     - OpenBSD
+       - =# pkg_add -l obsd.pkgs=
 	 
    - Logout and Login
 ** Scripts and what they do
@@ -40,5 +42,5 @@
 - statusbar - scripts for dwmblocks when I used a bar.
 - transadd - add a torrent to transmission (stolen from [[https://github.com/lukesmithxyz][Luke Smith]])
 - ytdownloader.sh - downloads youtube videos from a playlist in 1080p
-
-
+** Todo
+   - [ ] Write a script to simplify process

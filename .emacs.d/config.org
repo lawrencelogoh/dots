@@ -8,11 +8,11 @@
 			      ("melpa" . "https://melpa.org/packages/")))
 
      (unless package-archive-contents
-       (package-refresh-contents))
+	    (package-refresh-contents))
 
      ;; install use-package if it's not installed
      (unless (package-installed-p 'use-package)
-       (package-install 'use-package))
+	    (package-install 'use-package))
 
      ;; always ensure packages are installed
      (require 'use-package-ensure)
@@ -20,12 +20,12 @@
 
      ;; packages
      (use-package modus-themes
-       :init
-       (setq modus-themes-slanted-constructs t
-	     modus-themes-bold-constructs t)
-       (modus-themes-load-themes)
-	     :config
-	     (modus-themes-load-vivendi))
+	    :init
+	    (setq modus-themes-slanted-constructs t
+		  modus-themes-bold-constructs t)
+	    (modus-themes-load-themes)
+	    :config
+		  (modus-themes-load-vivendi))
 
      ;; programming
 
@@ -35,6 +35,7 @@
      (use-package rust-mode)
 
      ;; add other modes
+     (use-package markdown-mode)
      (use-package reformatter)
      (use-package eglot) ;; lsp client
      (use-package emmet-mode)
